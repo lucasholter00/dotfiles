@@ -161,12 +161,12 @@ alias gs="git status"
 alias pause="spotify pause"
 alias bloombuddy="cd; cd codeprojects/bloombuddy";
 alias cd="z";
-alias cat="bat";
+alias cat="batcat";
 alias vm="multipass";
 alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions --grid";
-alias hconn="ssh holter@192.168.0.100"
 alias dc="docker compose"
 alias kube="kubectl"
+alias iiq="sudo /opt/tomcat/webapps/identityiq/WEB-INF/bin/iiq console"
 
 eval "$(zoxide init zsh)"
 
