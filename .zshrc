@@ -149,12 +149,12 @@ function vol {
 }
 
 
+alias pd="podman"
 alias gitcout="git checkout"
 alias snake="cd; cd codeprojects/snake"
 alias gitlg="git log --graph --all --decorate"
 alias pgstart="pg_ctl -D /opt/homebrew/var/postgresql@14 start"
 alias pgstop="pg_ctl -D /opt/homebrew/var/postgresql@14 stop"
-alias emp="cd; cd codeprojects/employee_sys/klonkidonkemployee_sys"
 alias next="spotify next"
 alias prev="spotify prev"
 alias gs="git status"
@@ -164,21 +164,17 @@ alias cd="z";
 alias cat="batcat";
 alias vm="multipass";
 alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions --grid";
+alias hconn="ssh holter@192.168.0.100"
 alias dc="docker compose"
 alias kube="kubectl"
 alias iiq="sudo /opt/tomcat/webapps/identityiq/WEB-INF/bin/iiq console"
+alias mockvm="ssh 192.168.140.133 -l spadmin"
+alias testvm="ssh 20.240.90.33 -l centadmin"
 
 eval "$(zoxide init zsh)"
 
-export JAVA_HOME=/Users/lucasholter/Library/Java/JavaVirtualMachines/openjdk-19.0.1/Contents/Home
-export CLASSPATH=~/CodeProjects/ArchitectureA4/a4-group-18/microservices/mysql-connector-j-8.0.33.jar:~/CodeProjects/ArchitectureA4/a4-group-18/microservices/ dir
-
-function runMs {
-    rmiregistry $1 &;
-    export RMI_REMOTE_PORT=$1;
-    javac *.java
-    java $2;
-}
+export JAVA_HOME="/usr"
+export PATH=/usr/bin:$PATH
 
 function runC {
     gcc -o $1 $1.c;
@@ -274,8 +270,15 @@ int main(void) {
 }
 
 # Add this to ~/.zshrc or ~/.bash_profile
-export PATH="/Applications/MacPorts/Emacs.app/Contents/MacOS:$PATH"
-export PATH="$PATH:/Users/lucasholter/Downloads/NuSMV-2.6.0-Darwin/bin"
 export PATH="/Users/lucasholter/scripts/:$PATH"
 export PATH="$HOME/.ghcup/bin:$PATH"
+export IIQ_HOME="/opt/tomcat/webapps/identityiq"
+export CATALINA_HOME="/opt/tomcat"
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
