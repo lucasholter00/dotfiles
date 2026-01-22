@@ -79,9 +79,10 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting web-search direnv)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting web-search)
 eval "$(zoxide init zsh)"
 source $ZSH/oh-my-zsh.sh
+eval "$(direnv-instant hook zsh)"
 
 # User configuration
 
@@ -267,6 +268,16 @@ int main(void) {
     make;
     ./projectName;
     cd ..;
+}
+
+flakify() {
+  if [ ! -e flake.nix ]; then
+    nix flake new -t github:nix-community/nix-direnv .
+  elif [ ! -e .envrc ]; then
+    echo "use flake" > .envrc
+    direnv allow
+  fi
+  ${EDITOR:-nvim} flake.nix
 }
 
 # Add this to ~/.zshrc or ~/.bash_profile
