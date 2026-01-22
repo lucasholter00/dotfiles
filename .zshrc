@@ -177,6 +177,14 @@ eval "$(zoxide init zsh)"
 export JAVA_HOME="/usr"
 export PATH=/usr/bin:$PATH
 
+function cat {
+    if command -v bat >/dev/null; then
+        bat $@
+    else
+        batcat $@
+    fi
+}
+
 function runC {
     gcc -o $1 $1.c;
     ./$1 $2
